@@ -23,6 +23,7 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('', include('polls.urls')),
     path('jobinfo/', include('jobinfo.urls')),
+    path('english/', include('english.urls')),
     ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

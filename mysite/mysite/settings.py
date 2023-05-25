@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'jobinfo.apps.JobinfoConfig',
     'rest_framework',
+    'english.apps.EnglishConfig',
 ]
 
 MIDDLEWARE = [
