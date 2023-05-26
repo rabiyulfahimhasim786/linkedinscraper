@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     'jobinfo.apps.JobinfoConfig',
-    'codedata.apps.CodedataConfig',
-    'english.apps.EnglishConfig',
     'rest_framework',
 ]
 
