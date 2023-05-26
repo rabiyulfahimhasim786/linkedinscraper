@@ -32,7 +32,7 @@ from pyaspeller import YandexSpeller
 import language_tool_python
 def errorcorrecting(text):
     tool = language_tool_python.LanguageTool('en-US')  # use a local server
-    tool = language_tool_python.LanguageToolPublicAPI('en-US') # or use public API
+    #tool = language_tool_python.LanguageToolPublicAPI('en-US') # or use public API
     datasets = tool.correct(text)
     return datasets
 
@@ -109,10 +109,16 @@ class SpellcheckListview(ListCreateAPIView):
             input_text = request.queryparams.get('inputtext')
         output_data = errorcorrecting(input_text)
         print(output_data)
-        #output_text =  process_large_text(output_data)
+        # output_text =  process_large_text(output_data)
         output_text = errocorrectpyspeller(output_data)
+        # output_text = errocorrectpyspeller(input_text)
+        print(output_text)
         print(output_text)
         spellcheckerapi = Spellchecker.objects.create(inputtext=input_text, outputtext=output_text)
         serializers = Spellcheckerserializers(spellcheckerapi)
         return Response(serializers.data)
 
+
+class SpellcheckDeleteview(RetrieveUpdateDestroyAPIView):
+    queryset = Spellchecker.objects.all()
+    serializer_class = Spellcheckerserializers
